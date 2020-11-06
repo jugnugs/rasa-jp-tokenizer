@@ -23,6 +23,10 @@ class JanomeTokenizer(Tokenizer):
     def __init__(self, component_config: Dict[Text, Any] = None) -> None:
         super().__init__(component_config)
 
+    @classmethod
+    def required_packages(cls) -> List[Text]:
+      return ["janome"]
+
     def removePunctuation(self, text: Text) -> Text:
       punctuation = "[｛｝（）［］【】、…。〜「」『』：！？]"
       return re.sub(punctuation, "",  text)
