@@ -38,6 +38,7 @@ from rasa.nlu.tokenizers.jieba_tokenizer import JiebaTokenizer
 from rasa.nlu.tokenizers.mitie_tokenizer import MitieTokenizer
 from rasa.nlu.tokenizers.spacy_tokenizer import SpacyTokenizer
 from rasa.nlu.tokenizers.whitespace_tokenizer import WhitespaceTokenizer
+from rasa.nlu.tokenizers.janome_tokenizer import JanomeTokenizer
 from rasa.nlu.tokenizers.lm_tokenizer import LanguageModelTokenizer
 from rasa.nlu.utils.mitie_utils import MitieNLP
 from rasa.nlu.utils.spacy_utils import SpacyNLP
@@ -68,6 +69,7 @@ component_classes = [
     WhitespaceTokenizer,
     ConveRTTokenizer,
     JiebaTokenizer,
+    JanomeTokenizer,
     LanguageModelTokenizer,
     # extractors
     SpacyEntityExtractor,
