@@ -23,15 +23,20 @@ class JanomeTokenizer(Tokenizer):
     def __init__(self, component_config: Dict[Text, Any] = None) -> None:
         super().__init__(component_config)
 
+    def removePunctuation(self, text: Text) -> Text:
+      punctuation = "[｛｝（）［］【】、…。〜「」『』：！？]"
+      return re.sub(punctuation, "",  text)
 
     def tokenize(self, message: Message, attribute: Text) -> List[Token]:
         from janome.tokenizer import Tokenizer
         text = message.get(attribute)
+        text = self.removePunctuation(text)
+
         tokenizer = Tokenizer()
         tokenized = tokenizer.tokenize(text)
         tokens = []
         for token in tokenized:
           tokens.append(Token(token.node.surface, token.node.pos - 1))
-        # tokens = [Token(word, start) for (word, start, end) in tokenized]
 
         return self._apply_token_pattern(tokens)
+
